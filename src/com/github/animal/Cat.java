@@ -70,7 +70,7 @@ public class Cat {
 	}
 
 	public void fight(Cat cat, boolean readyFirst, boolean readySecond) {
-		if (readyFirst == true && readySecond == true) {
+		if (readyFirst && readySecond) {
 			if(this.age>cat.age && this.weight>cat.weight){
 				System.out.println(this.name+" win!!!");
 			}
