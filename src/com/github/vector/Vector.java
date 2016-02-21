@@ -40,11 +40,11 @@ public class Vector {
 		double a = this.x + vector.x;
 		double b = this.y + vector.y;
 		double c = this.z + vector.z;
-		Vector resultVector = new Vector(a, b, c);
-		return resultVector;
+
+		return new Vector(a, b, c);
 	}
 
-	public double scalarMultiply(Vector vectorOne,Vector vectorTwo) {
+	public double scalarMultiply(Vector vectorOne, Vector vectorTwo) {
 		double multiply = vectorOne.x * vectorTwo.x + vectorOne.y * vectorTwo.y + vectorOne.z * vectorTwo.z;
 
 		return multiply;
