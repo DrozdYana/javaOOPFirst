@@ -69,15 +69,23 @@ public class Cat {
 		System.out.println(name + " play with a " + toy);
 	}
 
-	public boolean fight(Cat catOne, Cat catTwo, boolean readyFirst, boolean readySecond) {
+	public void fight(Cat cat, boolean readyFirst, boolean readySecond) {
 		if (readyFirst == true && readySecond == true) {
-			return true;
+			if(this.age>cat.age && this.weight>cat.weight){
+				System.out.println(this.name+" win!!!");
+			}
+			else if(this.age<cat.age && this.weight<cat.weight){
+				System.out.println(cat.name+" win!!!");
+			}
+			else
+				System.out.println("Friendship win");
+			
 		} else
-			return false;
+			System.out.println("No fight let's play");
 	}
 
-	public void playTogether(String catOne, String catTwo, String toy) {
-		System.out.println(catOne + " play with " + catTwo + " and they have a " + toy);
+	public void playTogether(Cat cat, String toy) {
+		System.out.println(this.name + " play with " + cat.name + " and they have a " + toy);
 	}
 
 	@Override
