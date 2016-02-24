@@ -1,54 +1,46 @@
 package com.github.shape;
 
 public class Triangle extends Shape {
-	private Point x;
-	private Point y;
-	private Point z;
+	private Point p1;
+	private Point p2;
+	private Point p3;
 
-	public Triangle(Point x, Point y, Point z) {
+	public Triangle(Point p1, Point p2, Point p3) {
 		super();
-		this.x = x;
-		this.y = y;
-		this.z = z;
+		this.p1 = p1;
+		this.p2 = p2;
+		this.p3 = p3;
 	}
 
-	public Point getX() {
-		return x;
+	public Point getP1() {
+		return p1;
 	}
 
-	public void setX(Point x) {
-		this.x = x;
+	public void setP1(Point p1) {
+		this.p1 = p1;
 	}
 
-	public Point getY() {
-		return y;
+	public Point getP2() {
+		return p2;
 	}
 
-	public void setY(Point y) {
-		this.y = y;
+	public void setP2(Point p2) {
+		this.p2 = p2;
 	}
 
-	public Point getZ() {
-		return z;
+	public Point getP3() {
+		return p3;
 	}
 
-	public void setZ(Point z) {
-		this.z = z;
-	}
-
-	private double[] getLength(Point p1, Point p2, Point p3) {
-		double[] lengthArray = new double[3];
-		lengthArray[0] = Math.sqrt(Math.pow(p2.getX() - p1.getX(), 2) + Math.pow(p2.getY() - p1.getY(), 2));
-		lengthArray[1] = Math.sqrt(Math.pow(p3.getX() - p2.getX(), 2) + Math.pow(p3.getY() - p2.getY(), 2));
-		lengthArray[2] = Math.sqrt(Math.pow(p1.getX() - p3.getX(), 2) + Math.pow(p1.getY() - p3.getY(), 2));
-		return lengthArray;
-
+	public void setP3(Point p3) {
+		this.p3 = p3;
 	}
 
 	private boolean isTriangle() {
-		double[] lengthArray = getLength(x, y, z);
-		if ((lengthArray[0] + lengthArray[1] > lengthArray[2]) && (lengthArray[0] + lengthArray[2] > lengthArray[1])
-				&& (lengthArray[1] + lengthArray[2] > lengthArray[0])) {
+
+		if ((p1.getLength(p1, p2) + p1.getLength(p2, p3) > p1.getLength(p1, p3))
+				&& (p1.getLength(p1, p2) + p1.getLength(p1, p3) > p1.getLength(p2, p3))
+				&& (p1.getLength(p2, p3) + p1.getLength(p1, p3) > p1.getLength(p1, p2))) {
 			return true;
 		} else
 			return false;
@@ -57,8 +49,8 @@ public class Triangle extends Shape {
 	@Override
 	double perimetr() {
 		if (isTriangle()) {
-			double[] lengthArray = getLength(x, y, z);
-			return lengthArray[0] + lengthArray[1] + lengthArray[2];
+
+			return p1.getLength(p1, p2) + p1.getLength(p2, p3) + p1.getLength(p1, p3);
 		} else
 			return 0;
 	}
@@ -66,9 +58,8 @@ public class Triangle extends Shape {
 	@Override
 	double area() {
 		if (isTriangle()) {
-			double[] lengthArray = getLength(x, y, z);
 			double p = perimetr() / 2.0;
-			return Math.sqrt(p * (p - lengthArray[0]) * (p - lengthArray[1]) * (p - lengthArray[2]));
+			return Math.sqrt(p * (p - p1.getLength(p1, p2)) * (p - p1.getLength(p2, p3)) * (p - p1.getLength(p1, p3)));
 		} else
 			return 0;
 	}
@@ -76,11 +67,11 @@ public class Triangle extends Shape {
 	@Override
 	public String toString() {
 		if (isTriangle()) {
-			double[] lengthArray = getLength(x, y, z);
-			return "Triangle [" + x + ", " + y + ", " + z + "]" + " or " + "Triangle [x=" + lengthArray[0] + ", y="
-					+ lengthArray[1] + ", z=" + lengthArray[2] + "]";
+			return "Triangle [" + p1 + ", " + p2 + ", " + p3 + "]" + " with length [x=" + p1.formatDouble(p1.getLength(p1, p2))
+					+ ", y=" + p1.formatDouble(p1.getLength(p2, p3)) + ", z=" + p1.formatDouble(p1.getLength(p1, p3)) + "]";
 		} else
 			return "FAIL IT'S NOT A TRIANGLE!!!";
 	}
+	
 
 }

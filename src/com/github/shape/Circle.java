@@ -26,12 +26,8 @@ public class Circle extends Shape {
 		this.p2 = p2;
 	}
 
-	private double getLength(Point p1Center, Point p2) {
-		return Math.sqrt(Math.pow(p2.getX() - p1Center.getX(), 2) + Math.pow(p2.getY() - p1Center.getY(), 2));
-	}
-
 	private boolean isCircle() {
-		if (getLength(p1Center, p2) > 0) {
+		if (p1Center.getLength(p1Center, p2) > 0) {
 			return true;
 		} else
 			return false;
@@ -40,7 +36,7 @@ public class Circle extends Shape {
 	@Override
 	double perimetr() {
 		if (isCircle()) {
-			return 2 * Math.PI * getLength(p1Center, p2);
+			return 2 * Math.PI * p1Center.getLength(p1Center, p2);
 		} else
 			return 0;
 	}
@@ -48,7 +44,7 @@ public class Circle extends Shape {
 	@Override
 	double area() {
 		if (isCircle()) {
-			return Math.PI * Math.pow(getLength(p1Center, p2), 2);
+			return Math.PI * Math.pow(p1Center.getLength(p1Center, p2), 2);
 		} else
 			return 0;
 	}
@@ -56,7 +52,7 @@ public class Circle extends Shape {
 	@Override
 	public String toString() {
 		if (isCircle()) {
-			return "Circle [p1Center=" + p1Center + ", p2=" + p2 + "]";
+			return "Circle [p1Center=" + p1Center + ", p2=" + p2 + "] r=" + p1Center.formatDouble(p1Center.getLength(p1Center, p2));
 		} else
 			return "FAIL NOT A CIRCLE !!!";
 	}
