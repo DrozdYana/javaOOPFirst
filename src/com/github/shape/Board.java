@@ -1,40 +1,52 @@
 package com.github.shape;
 
 public class Board {
-	private double area;
+	private Shape[] shape;
 
-	public Board(double area) {
+	public Board() {
 		super();
-		this.area = area;
+
 	}
 
-	public double getArea() {
-		return area;
+	public Shape[] getShape() {
+		return shape;
 	}
 
-	public void setArea(double area) {
-		this.area = area;
+	public void setShape(Shape[] shape) {
+		this.shape = shape;
 	}
 
 	public void putShape(Shape[] shape) {
-		double boardArea = this.getArea();
-		for (Shape shapeIter : shape) {
-			if (shapeIter.area() < boardArea) {
-				System.out.println(shape + " was put on a board");
-				boardArea -= shapeIter.area();
-			} else
-				System.out
-						.println("There is no more space, please delete some shapes or stop. Space left " + boardArea);
-		}
-		this.setArea(boardArea);
+		for (int i = 0; i < shape.length; i++) {
+			if (shape.length < 4) {
+				System.out.println(shape[i] + " was put on a board");
 
+			} else {
+				System.out.println("There is no more space, please delete some shapes or stop.");
+
+			}
+		}
+		this.setShape(shape);
 	}
 
 	public void delShape(Shape[] shape) {
-		double boardArea = this.getArea();
-		for (Shape shapeIter : shape) {
-			boardArea += shapeIter.area();
+		Shape[] shapeArray = this.getShape();
+		for (int i = 0; i < shape.length; i++) {
+			for (int j = 0; j < shapeArray.length; j++) {
+				if (shape[i] == shapeArray[j]) {
+					shapeArray[j] = null;
+				} else {
+					shapeArray[j] = shape[i];
+				}
+			}
+
 		}
-		this.setArea(boardArea);
+		for (int i = 0; i < shapeArray.length; i++) {
+			if (shapeArray[i] != null) {
+				shapeArray[i] = shapeArray[i];
+			} else
+				return;
+		}
+		this.setShape(shapeArray);
 	}
 }
