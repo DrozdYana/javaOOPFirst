@@ -33,21 +33,18 @@ public class Board {
 
 	}
 
-	public void delShape(Shape[] shape) {
-		Shape[] shapeArray = this.getShape();
-		for (int i = 0; i < shape.length; i++) {
-			for (int j = 0; j < shapeArray.length; j++) {
-				if (shapeArray[j] == shape[i]) {
-					shapeArray[j] = null;
+	public void delShape(int position) {
+		position --;
+		
+				if ((position>=0)&&(position<this.shape.length)) {
+					this.shape[position] = null;
 				} else {
-					shapeArray[j] = shapeArray[j];
+					System.out.println("No such positionon the board! Please choose the other one");
 				}
-			}
+			
 
-		}
-
-		this.setShape(shapeArray);
-		System.out.println("Result after deletion: " + Arrays.toString(shapeArray));
+		
+		System.out.println("Result after deletion: " + Arrays.toString(this.shape));
 	}
 
 	@Override

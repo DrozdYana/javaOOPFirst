@@ -36,13 +36,14 @@ public class Runner {
 		Board board=new Board();
 		System.out.println("4)");
 		board.putShape(shapeArray);
-		Shape[] shapeArrayDel={shapeTriangle};
 		System.out.println("5)");
-		board.delShape(shapeArrayDel);
+		board.delShape(1);
 		System.out.println("6)");
 		System.out.println(board);
 		Shape[] shapeArrayNew={shapeTriangle};
+		System.out.println("7)");
 		board.putShape(shapeArrayNew);
+		System.out.println("8)");
 		System.out.println(board);
 	}
 
