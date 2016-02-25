@@ -4,7 +4,7 @@ import java.text.DecimalFormat;
 import java.util.Arrays;
 
 public class Board {
-	private Shape[] shape;
+	private Shape[] shape = new Shape[4];
 
 	public Board() {
 		super();
@@ -20,18 +20,17 @@ public class Board {
 	}
 
 	public void putShape(Shape[] shape) {
-				
-		for (int i = 0; i < shape.length; i++) {
-			if ((shape.length < 5) && (this.getShape()==null)) {
-				System.out.println("You've put on a board: " + shape[i]);
-				
 
+		for (int i = 0; i < shape.length; i++) {
+			if (this.shape[i] == null) {
+				System.out.println("You've put on a board: " + shape[i]);
+				this.shape[i] = shape[i];
 			} else {
 				System.out.println("There is no more space, please delete some shapes or stop.");
 
 			}
 		}
-		this.setShape(shape);
+
 	}
 
 	public void delShape(Shape[] shape) {
