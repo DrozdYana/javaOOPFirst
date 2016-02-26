@@ -36,8 +36,8 @@ public class Board {
 	public void delShape(int position) {
 		position --;
 		
-				if ((position>=0)&&(position<this.shape.length)) {
-					this.shape[position] = null;
+				if ((position>=0)&&(position<shape.length)) {
+					shape[position] = null;
 				} else {
 					System.out.println("No such positionon the board! Please choose the other one");
 				}
